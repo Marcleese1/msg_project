@@ -126,3 +126,5 @@ AUTH_USER_MODEL = 'users.CustomUser'
 # msg_project/settings.py
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+# msg_project/settings.py
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
