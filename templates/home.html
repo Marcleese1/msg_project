@@ -4,12 +4,11 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'logout' %}">logout</a></p>
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a> |
-  <a href="{% url 'signup' %}">signup</a>
-{% endif %}
+<div class="jumbotron">
+  <h1 class="display-4">Social Messaging app</h1>
+  <p class="lead">A Twitter clone built with Django.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{% url 'posts' %}" role="button">View All Messages</a>
+  </p>
+</div>
 {% endblock %}

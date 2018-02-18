@@ -6,6 +6,16 @@ from django.urls import reverse_lazy
 from . import models
 
 
+class PostCreateView(CreateView):
+    model = models.Post
+    template_name = 'post_new.html'
+    fields = ['message']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
 class PostListView(ListView):
     model = models.Post
     template_name = 'post_list.html'
@@ -27,7 +37,4 @@ class PostDeleteView(DeleteView):
     template_name = 'post_delete.html'
     success_url = reverse_lazy('posts')
 
-    class PostCreateView(CreateView):
-        model = models.Post
-        template_name = 'post_new.html'
-        fields = ['message', 'author']
+
