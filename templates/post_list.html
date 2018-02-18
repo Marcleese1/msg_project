@@ -12,9 +12,10 @@
       <div class="card-body">
         {{ post.message }}
       </div>
-      <div class="card-footer text-center text-muted">
-        <a href="#">Edit</a> | <a href="#">Delete</a>
-      </div>
+     <div class="card-footer text-center text-muted">
+        <a href="{% url 'post_edit' post.pk %}">Edit</a> |
+        <a href="{% url 'post_delete' post.pk %}">Delete</a>
+     </div>
     </div>
     <br />
   {% endfor %}

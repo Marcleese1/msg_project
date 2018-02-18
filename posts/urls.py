@@ -11,4 +11,5 @@ urlpatterns = [
          views.PostDetailView.as_view(), name='post_detail'),  # new
     path('<int:pk>/delete/',
          views.PostDeleteView.as_view(), name='post_delete'),  # new
+    path('new/', views.PostCreateView.as_view(), name='post_new'),
 ]
