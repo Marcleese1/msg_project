@@ -4,16 +4,18 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
+
 from . import models
 
 
 class PostListView(LoginRequiredMixin, ListView): # new
     model = models.Post
+
     template_name = 'post_list.html'
-    login_url = 'login' # new
+    login_url = 'login'
 
 
-class PostCreateView(LoginRequiredMixin, CreateView): # new
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = models.Post
     template_name = 'post_new.html'
     fields = ['message']
@@ -38,8 +40,8 @@ class PostUpdateView(LoginRequiredMixin, UpdateView): # new
 
 
 class PostDeleteView(LoginRequiredMixin, DeleteView): # new
-    model = models.Post
-    template_name = 'post_delete.html'
-    success_url = reverse_lazy('posts')
-    login_url = 'login' # new
+        model = models.Post
+        template_name = 'post_delete.html'
+        success_url = reverse_lazy('posts')
+        login_url = 'login' # new
 
