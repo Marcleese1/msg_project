@@ -34,6 +34,7 @@ class PostDetailView(LoginRequiredMixin, DetailView): # new
 
 
 class PostUpdateView(LoginRequiredMixin, UpdateView): # new
+
     #if user or superuser
     model = models.Post
     fields = ['message']
@@ -54,4 +55,10 @@ class PostDeleteView(LoginRequiredMixin, DeleteView): # new
         template_name = 'post_delete.html'
         success_url = reverse_lazy('posts')
         login_url = 'login' # new
+
+        def dispatch(self, request, *args, **kwargs):
+            obj = self.get_object()
+            if obj.author != self.request.user:
+                raise Http404("You are not allowed to Delete this Post")#sllows you to show a 404 page when someone who didnt write the post tried to edit it
+            return super(PostUpdateView, self).dispatch(request, *args, **kwargs)
 

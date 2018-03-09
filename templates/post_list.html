@@ -11,7 +11,7 @@
       </div>
       <div class="card-body">
         <p>{{ post.message }}</p>
-        {% if auth_user_pkey is users_customuser.id %}
+        {% if messages %}
         <a href="{% url 'post_edit' post.pk %}">Edit</a> | <a href="{% url 'post_delete' post.pk %}">Delete</a>
         {% else %}
             <a href="{% url 'post_edit' post.pk %}">Comment</a>
